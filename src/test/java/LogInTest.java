@@ -1,4 +1,5 @@
 import com.codeborne.selenide.WebDriverRunner;
+import io.qameta.allure.junit4.DisplayName;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -7,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import stellarburgers.*;
-
 import static com.codeborne.selenide.Selenide.open;
 
 public class LogInTest {
@@ -26,6 +26,7 @@ public class LogInTest {
 //        WebDriverRunner.setWebDriver(driver);
 //        driver.manage().window().maximize();
 //    }
+
     @Before
     public void chromeBrowser() {
         ChromeOptions options = new ChromeOptions();
@@ -38,6 +39,7 @@ public class LogInTest {
     }
 
     @Test
+    @DisplayName("Проверка входа через кнопку «Личный кабинет»")
     public void checkLoginAccount(){
         MainPage page = open("https://stellarburgers.nomoreparties.site",
                 MainPage.class);
@@ -52,6 +54,7 @@ public class LogInTest {
     }
 
     @Test
+    @DisplayName("Проверка входа через кнопку «Войти в аккаунт»")
     public void checkLoginButton(){
         MainPage page = open("https://stellarburgers.nomoreparties.site",
                 MainPage.class);
@@ -65,8 +68,8 @@ public class LogInTest {
         accountPage.checkProfile();
     }
 
-
     @Test
+    @DisplayName("Проверка входа через кнопку в форме восстановления пароля")
     public void checkLoginButtonInRecovery(){
         MainPage page = open("https://stellarburgers.nomoreparties.site",
                 MainPage.class);
@@ -85,6 +88,7 @@ public class LogInTest {
     }
 
     @Test
+    @DisplayName("Проверка входа через кнопку в форме регистрации")
     public void checkLoginAfterRegistration(){
         name = RandomStringUtils.randomAlphabetic(10);
         email = RandomStringUtils.randomAlphabetic(10) + "@yandex.ru";

@@ -1,4 +1,5 @@
 import com.codeborne.selenide.WebDriverRunner;
+import io.qameta.allure.junit4.DisplayName;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -9,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import stellarburgers.AccountPage;
 import stellarburgers.LoginPage;
 import stellarburgers.RegisterPage;
-
 import static com.codeborne.selenide.Selenide.open;
 
 public class RegisterTest {
@@ -28,6 +28,7 @@ public class RegisterTest {
 //        WebDriverRunner.setWebDriver(driver);
 //        driver.manage().window().maximize();
 //    }
+
     @Before
     public void chromeBrowser() {
         ChromeOptions options = new ChromeOptions();
@@ -40,6 +41,7 @@ public class RegisterTest {
     }
 
     @Test
+    @DisplayName("Проверка успешной регистрацию")
     public void checkRegistration(){
         //test data
         name = RandomStringUtils.randomAlphabetic(10);
@@ -58,6 +60,7 @@ public class RegisterTest {
     }
 
     @Test
+    @DisplayName("Проверка регистрации с невалидным паролем")
     public void checkRegistrationWrongPassword(){
         //test data
         name = RandomStringUtils.randomAlphabetic(10);
@@ -73,5 +76,4 @@ public class RegisterTest {
     public void teardown() {
         driver.quit();
     }
-
 }

@@ -1,4 +1,5 @@
 import com.codeborne.selenide.WebDriverRunner;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import stellarburgers.AccountPage;
 import stellarburgers.LoginPage;
 import stellarburgers.MainPage;
-
 import static com.codeborne.selenide.Selenide.open;
 
 public class AccountTest {
@@ -39,6 +39,7 @@ public class AccountTest {
     }
 
     @Test
+    @DisplayName("Проверка перехода по клику на «Личный кабинет»")
     public void checkSwitchToAccount(){
         MainPage page = open("https://stellarburgers.nomoreparties.site",
                 MainPage.class);
@@ -53,6 +54,7 @@ public class AccountTest {
     }
 
     @Test
+    @DisplayName("Проверка перехода по клику на «Конструктор»")
     public void checkSwitchToConstructor(){
         MainPage page = open("https://stellarburgers.nomoreparties.site",
                 MainPage.class);
@@ -68,6 +70,7 @@ public class AccountTest {
     }
 
     @Test
+    @DisplayName("Проверка перехода по клику на логотип")
     public void checkSwitchToConstructorClickLogo(){
         MainPage page = open("https://stellarburgers.nomoreparties.site",
                 MainPage.class);
@@ -83,6 +86,7 @@ public class AccountTest {
     }
 
     @Test
+    @DisplayName("Проверка выхода по кнопке «Выйти»")
     public void checkLogOut(){
         MainPage page = open("https://stellarburgers.nomoreparties.site",
                 MainPage.class);
@@ -96,6 +100,7 @@ public class AccountTest {
         accountPage.clickLogOutButton();
         loginPage.checkVisibleButtonLogIn();
     }
+
     @After
     public void teardown() {
         driver.quit();
